@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test floating elements</title>
+    <link rel="stylesheet" type="text/css" href="https://github.com/zijuexiansheng/utiljs/css/floating-menu.css">
+    <script src="https://github.com/zijuexiansheng/utiljs/js/floating-menu.js"></script>
+</head>
+
+<body>
+    <div id="showme">
+    </div>
+    <script>
+        floating_combo("main_menu", "right", "100px", "80px", "top", "80px", ["btn-1", "btn-2"]);
+        var btn1 = document.getElementById("btn-1");
+        var btn2 = document.getElementById("btn-2");
+        var showme = document.getElementById("showme");
+        btn1.innerHTML = "hehe";
+        btn2.innerHTML = "haha";
+        btn1.addEventListener("click", function(){ showme.innerHTML += "btn1: hehe is clicked <br/>"});
+        btn2.addEventListener("click", function(){ showme.innerHTML += "btn2: haha is clicked <br/>"});
+
+        floating_btn("left-btn", "top", "300px", "100px", "left", "80px", "ooops", {"font-size": "100px", "color": "blue"});
+
+    </script>
+</body>
+</html>
