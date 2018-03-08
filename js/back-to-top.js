@@ -23,8 +23,13 @@ function back_to_top(id, placement)
     back_to_top_btn.style.cursor = "pointer";
     back_to_top_btn.style.position = "fixed";
     back_to_top_btn.style.bottom = "20px";
+    back_to_top_btn.style.borderRadius = "26px";
+    back_to_top_btn.style.width = "53px";
+    back_to_top_btn.style.height = "52px";
+    back_to_top_btn.style.opacity="0.2";
     back_to_top_btn.style[ placement ] = "20px";
     back_to_top_btn.style.display = "none";
+    back_to_top_btn.style.textDecoration = "none";
 
     back_to_top_btn.addEventListener("click", function(){
         $("#" + id).tooltip("hide");
