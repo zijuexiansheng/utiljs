@@ -1,4 +1,4 @@
-function back_to_top(id, placement)
+function back_to_top(id, placement, animate_dom)
 {
     var data_placement = "left";
     if(placement == "left")
@@ -33,14 +33,28 @@ function back_to_top(id, placement)
 
     back_to_top_btn.addEventListener("click", function(){
         $("#" + id).tooltip("hide");
-        $("body,html").animate({
-            scrollTop: 0
-        }, 200);
+        if(animate_dom === undefined)
+        {
+            $("body,html").animate({
+                scrollTop: 0
+            }, 200);
+        }
+        else
+        {
+            $("#" + animate_dom).animate({
+                scrollTop: 0
+            }, 200);
+        }
         return false;
     });
 
     var scroll_function = function() {
-        if($(this).scrollTop() > 50)
+        var tmp_dom;
+        if(animate_dom === undefined)
+            tmp_dom = $(this);
+        else
+            tmp_dom = $("#" + animate_dom);
+        if(tmp_dom.scrollTop() > 50)
             $("#" + id).fadeIn();
         else
             $("#" + id).fadeOut();
