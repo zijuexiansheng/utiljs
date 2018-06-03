@@ -12,11 +12,22 @@ class ToggleLeftRight {
         this._storage_key = storage_key;
         this._current_state = 3;
 
+        this.check_property(this._left_dom, "half_ratio", "50%");
+        this.check_property(this._left_dom, "full_ratio", "100%");
+        this.check_property(this._right_dom, "half_ratio", "50%");
+        this.check_property(this._right_dom, "full_ratio", "100%");
+
         this._left_arrow =  this.build_arrow("left", left_dom.id, this.click_left_fn);
         this._right_arrow = this.build_arrow("right", right_dom.id, this.click_right_fn);
 
         if(this._current_state == 1)    this.hide_left;
         if(this._current_state == 2)    this.hide_right;
+    }
+
+    check_property(obj, property_name, default_value)
+    {
+        if(!obj.hasOwnProperty(property_name))
+            obj[property_name] = default_value;
     }
 
     build_arrow(position, parent_id, click_func)
@@ -53,8 +64,6 @@ class ToggleLeftRight {
     }
 
     click_left_fn() {
-        console.log("click left button: ");
-        console.log(this);
         if(this._current_state == 3)        this.hide_left();
         else if(this._current_state == 2)   this.show_both();
         else    return;
@@ -64,7 +73,6 @@ class ToggleLeftRight {
     }
 
     click_right_fn() {
-        console.log("click right button");
         if(this._current_state == 3)        this.hide_right();
         else if(this._current_state == 1)   this.show_both();
         else    return;
