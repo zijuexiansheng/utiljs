@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test Toggle Parallel</title>
+    <script src="/js/toggle-parallel.js"></script>
+    <link href="/css/toggle-parallel.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 98%;
+            box-sizing: border-box;
+        }
+        .full_wh {
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .float-left {
+            float: left;
+            width: 50%;
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            padding-right: 3px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .float-right {
+            float: left;
+            width: 50%;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 5px;
+            padding-left: 3px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .full_height {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="full_wh">
+        <div class="float-left full_height" id="left">
+        </div>
+        <div class="float-right full_height" id="right">
+        </div>
+    </div>
+    <script>
+        function fill_content(dom_id)
+        {
+            var dom = document.getElementById(dom_id);
+            for(var i = 0; i < 100; ++i)
+                dom.innerHTML += "This is a very very very very very very very very very very very very very very very very very very very very very very very long sentence.<br/>";
+        }
+        fill_content("left");
+        fill_content("right");
+        var toggle = new ToggleLeftRight({id: "left", half_ratio: "50%", full_ratio: "100%"},
+                            {id: "right", half_ratio: "50%", full_ratio: "100%"},
+                            null);
+    </script>
+</body>
+</html>
