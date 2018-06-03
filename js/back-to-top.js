@@ -1,4 +1,4 @@
-function back_to_top(id, placement)
+function back_to_top(id, placement, animate_dom)
 {
     var data_placement = "left";
     if(placement == "left")
@@ -23,19 +23,38 @@ function back_to_top(id, placement)
     back_to_top_btn.style.cursor = "pointer";
     back_to_top_btn.style.position = "fixed";
     back_to_top_btn.style.bottom = "20px";
+    back_to_top_btn.style.borderRadius = "26px";
+    back_to_top_btn.style.width = "53px";
+    back_to_top_btn.style.height = "52px";
+    back_to_top_btn.style.opacity="0.2";
     back_to_top_btn.style[ placement ] = "20px";
     back_to_top_btn.style.display = "none";
+    back_to_top_btn.style.textDecoration = "none";
 
     back_to_top_btn.addEventListener("click", function(){
         $("#" + id).tooltip("hide");
-        $("body,html").animate({
-            scrollTop: 0
-        }, 200);
+        if(animate_dom === undefined)
+        {
+            $("body,html").animate({
+                scrollTop: 0
+            }, 200);
+        }
+        else
+        {
+            $("#" + animate_dom).animate({
+                scrollTop: 0
+            }, 200);
+        }
         return false;
     });
 
     var scroll_function = function() {
-        if($(this).scrollTop() > 50)
+        var tmp_dom;
+        if(animate_dom === undefined)
+            tmp_dom = $(this);
+        else
+            tmp_dom = $("#" + animate_dom);
+        if(tmp_dom.scrollTop() > 50)
             $("#" + id).fadeIn();
         else
             $("#" + id).fadeOut();
