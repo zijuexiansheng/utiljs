@@ -89,6 +89,10 @@ class ToggleLeftRight {
             this._current_state = 3;
             this.store_state();
         }
+        else
+        {
+            this._current_state = parseInt(this._current_state);
+        }
     }
 
     store_state() {
