@@ -20,6 +20,8 @@ class ToggleLeftRight {
         this._left_arrow =  this.build_arrow("left", left_dom.id, this.click_left_fn);
         this._right_arrow = this.build_arrow("right", right_dom.id, this.click_right_fn);
 
+        this.load_state();
+
         if(this._current_state == 1)    this.hide_left;
         if(this._current_state == 2)    this.hide_right;
     }
