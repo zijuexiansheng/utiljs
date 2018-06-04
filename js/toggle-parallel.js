@@ -22,8 +22,8 @@ class ToggleLeftRight {
 
         this.load_state();
 
-        if(this._current_state == 1)    this.hide_left;
-        if(this._current_state == 2)    this.hide_right;
+        if(this._current_state == 1)    this.hide_left();
+        if(this._current_state == 2)    this.hide_right();
     }
 
     check_property(obj, property_name, default_value)
