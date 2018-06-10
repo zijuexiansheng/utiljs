@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test recent viewed</title>
+</head>
+
+<body>
+    <script src="/js/recent-viewed.js"></script>
+    <script>
+        var loontest = new RecentViewed("loontest");
+        console.log(loontest.load());
+        loontest.record("1", {"content": "1-content"});
+        loontest.record("2", {"content": "2-content"});
+        loontest.record("3", "content3");
+        console.log(loontest.load());
+        loontest.record("2", "content-2");
+        console.log(loontest.load());
+    </script>
+</body>
+</html>
